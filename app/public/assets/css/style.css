@@ -1,0 +1,116 @@
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #eaeaea url('../img/bg.png');
+}
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.content h1 {
+  width: 100%;
+  font-size: 5em;
+  font-weight: bold;
+  color: #b3b3b3;
+  color: rgba(255, 255, 255, 0.3);
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}
+form::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  content: '';
+  border-radius: inherit;
+  height: 15px;
+  z-index: 2;
+  border-bottom: 1px solid #6c615c;
+  background: #8d7d77;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(132, 110, 100, 0.8)), to(rgba(101, 84, 76, 0.8)));
+  background: -webkit-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+  background: linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#9d8b83', EndColorStr='#847670');
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2), -2px 0 3px rgba(0, 0, 0, 0.2);
+}
+form {
+  position: relative;
+  border-bottom: 1px dotted #adadad;
+  background-color: #fcfcfc;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2), -2px 0 3px rgba(0, 0, 0, 0.2);
+}
+form input[type="url"] {
+  position: relative;
+  margin: 0;
+  width: 90%;
+  font-size: 1.8em;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  outline: none;
+  color: inherit;
+  padding: 6px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  padding: 31px 16px 16px 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.02);
+  z-index: 2;
+  box-shadow: none;
+}
+form button {
+  border-radius: 10px;
+}
+.list {
+  position: relative;
+  margin: 0 auto;
+  background-color: #fcfcfc;
+  width: 100%;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2), -2px 0 3px rgba(0, 0, 0, 0.2);
+}
+.list input::-webkit-input-placeholder {
+  font-style: italic;
+}
+.list input::-moz-placeholder {
+  font-style: italic;
+  color: #a9a9a9;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+li::after {
+  border-bottom: 1px dotted #ccc;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  content: '';
+}
+li {
+  font-size: 1.5em;
+  height: 45px;
+  position: relative;
+  padding: 15px 0px 0px 40px;
+}
+/*####### MIXIN ##########*/
+.box-form-list {
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.2), -2px 0 3px rgba(0, 0, 0, 0.2);
+}

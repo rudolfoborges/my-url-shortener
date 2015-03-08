@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>URL Shotener</title>
+    <meta name="description" content="URL Shotener Application">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="lib/normalize.css/normalize.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- endbuild -->
+</head>
+  <body ng-app="myUrlShortener">
+
+    <!--[if lt IE 9]>
+      <script src="lib/es5-shim/es5-shim.min.js"></script>
+    <![endif]-->
+
+    <div class="content" ng-controller="MainController as vm">
+        <h1>URL Shortener</h1>
+
+        <form ng-submit="vm.add()">
+                <input type="url" ng-model="vm.url.value" placeholder="Digite sua URL!" required>
+                <button type="submit">OK</button>
+            </form>
+        <div class="list">    
+            <ul>
+                <li ng-repeat="url in vm.urls">
+                    <span class="">{{url.value}}</span>
+                    <span class="item-action">
+                        <a href="javascript:;" ng-show="!mv.urls" ng-click="done($index)"><i class="fa fa-check"></i></a>
+                        <a href="javascript:;" ng-click="remove($index)"><i class="fa fa-times"></i></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+
+    
+    <!-- build:js({.tmp,app}) js/scripts.js -->
+    <script src="angular.app.js"></script>
+    <script src="controllers/main-controller.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
