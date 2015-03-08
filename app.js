@@ -2,17 +2,15 @@
 	'use strict';
 
 	var express = require('express'),
-	path = require('path'),
-	logger = require('morgan'),
-	bodyParser = require('body-parser'),
-	mongoose = require('mongoose');
+		path = require('path'),
+		logger = require('morgan'),
+		bodyParser = require('body-parser'),
+		mongoose = require('mongoose'),
+		fs = require('fs'),
+		app = express();
 
-	//var routes = require('./server/routes');
-
-	var app = express();
-
+	
 	// Configuration
-
 	app.use(logger('dev'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,10 +19,17 @@
 	app.set('view engine', 'html');
 	app.engine('html', require('ejs').renderFile);
 
+	mongoose.connect('mongodb://localhost:27017/urlshortener');
+
+	// Bootstrap models
+	fs.readdirSync(path.join(__dirname, '/app/server/models')).forEach(function (file) {
+	  if (~file.indexOf('.js')) require('./app/server/models/' + file);
+	});
+
+
 	app.use(express.static(path.join(__dirname, 'app/public')));
 
-	//app.use('/api', routes);
-
+	app.use('/api', require('./app/server/routes'));
 
 	app.get('/', function(request, response) {
 	  response.render('index.html');

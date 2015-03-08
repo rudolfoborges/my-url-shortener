@@ -8,12 +8,12 @@
 	function MainController(){
 		var vm = this;
 
-		vm.url = {};
-		vm.urls = [];
+		vm.model = {};
+		vm.list = [];
 
 		vm.add = function(){
-			vm.urls.push({value: vm.url.value});
-			vm.url = {};
+			vm.list.push({url: vm.model.url});
+			vm.model = {};
 		}
 	}
 

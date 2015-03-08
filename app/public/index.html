@@ -23,13 +23,13 @@
         <h1>URL Shortener</h1>
 
         <form ng-submit="vm.add()">
-                <input type="url" ng-model="vm.url.value" placeholder="Digite sua URL!" required>
+                <input type="url" ng-model="vm.model.url" placeholder="Digite sua URL!" required>
                 <button type="submit">OK</button>
             </form>
         <div class="list">    
             <ul>
-                <li ng-repeat="url in vm.urls">
-                    <span class="">{{url.value}}</span>
+                <li ng-repeat="model in vm.list">
+                    <span class="">{{model.url}}</span>
                     <span class="item-action">
                         <a href="javascript:;" ng-show="!mv.urls" ng-click="done($index)"><i class="fa fa-check"></i></a>
                         <a href="javascript:;" ng-click="remove($index)"><i class="fa fa-times"></i></a>
