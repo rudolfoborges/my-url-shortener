@@ -9,6 +9,7 @@ body {
   padding-top: 30px;
 }
 .content h1 {
+  text-align: center;
   width: 100%;
   font-size: 5em;
   font-weight: bold;
@@ -20,6 +21,19 @@ body {
   -ms-text-rendering: optimizeLegibility;
   -o-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
+}
+.login {
+  width: 100%;
+  text-align: center;
+}
+.login p {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+.login p i {
+  font-size: 5em;
+  color: #b3b3b3;
 }
 form::before {
   position: absolute;
@@ -74,9 +88,6 @@ form input[type="url"] {
   z-index: 2;
   box-shadow: none;
 }
-form button {
-  border-radius: 10px;
-}
 .list {
   position: relative;
   margin: 0 auto;
@@ -109,6 +120,13 @@ li {
   height: 45px;
   position: relative;
   padding: 15px 0px 0px 40px;
+}
+.item-action {
+  float: right;
+  margin-right: 15px;
+}
+.item-action a {
+  color: #FCFCFC;
 }
 /*####### MIXIN ##########*/
 .box-form-list {

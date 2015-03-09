@@ -13,8 +13,9 @@ body {
 	max-width: @content-width;
 	margin: 0 auto;
 	padding-top: 30px;
-
+	
 	h1 {
+		text-align: center;
 		width: 100%;
 		font-size: 5em;
 		font-weight: bold;
@@ -26,6 +27,21 @@ body {
 		-ms-text-rendering: optimizeLegibility;
 		-o-text-rendering: optimizeLegibility;
 		text-rendering: optimizeLegibility;
+	}
+}
+
+.login {
+	width: 100%;
+	text-align: center;
+	p {
+		text-align: center;
+		width: 100%;
+		display: inline-block;
+
+		i {
+			font-size: 5em;
+			color: #b3b3b3;
+		}
 	}
 }
 
@@ -82,10 +98,6 @@ form {
 		z-index: 2;
 		box-shadow: none;
 	}
-
-	button {
-		border-radius: 10px;
-	}
 }
 
 
@@ -128,6 +140,15 @@ li {
 	position: relative;
 	padding: 15px 0px 0px 40px;
 
+}
+
+
+.item-action {
+	float: right;
+	margin-right: 15px;
+	a {
+		color: #FCFCFC;
+	}	
 }
 
 /*####### MIXIN ##########*/

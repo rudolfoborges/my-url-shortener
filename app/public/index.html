@@ -10,6 +10,8 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="lib/normalize.css/normalize.css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- endbuild -->
 </head>
@@ -20,19 +22,22 @@
     <![endif]-->
 
     <div class="content" ng-controller="MainController as vm">
+        <div class="login">
+            <p><i class="fa fa-user"></i></p>
+            <button type="button" ng-click="vm.login()" ng-hide="vm.isLoggedIn" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com o Facebook</button>
+        </div>
         <h1>URL Shortener</h1>
-
-        <form ng-submit="vm.add()">
+        <form ng-submit="vm.create()">
                 <input type="url" ng-model="vm.model.url" placeholder="Digite sua URL!" required>
-                <button type="submit">OK</button>
+                <button type="submit" class="btn btn-default">OK</button>
             </form>
         <div class="list">    
             <ul>
                 <li ng-repeat="model in vm.list">
-                    <span class="">{{model.url}}</span>
+                    <span class="">{{model.url}} &nbsp;&nbsp;>>&nbsp;&nbsp; </span>
+                    <span class=""><a href="#">http://localhost:3000/{{model.hash}}</a></span>
                     <span class="item-action">
-                        <a href="javascript:;" ng-show="!mv.urls" ng-click="done($index)"><i class="fa fa-check"></i></a>
-                        <a href="javascript:;" ng-click="remove($index)"><i class="fa fa-times"></i></a>
+                        <a href="javascript:;" ng-click="remove($index)">Remover<i class="fa fa-times"></i></a>
                     </span>
                 </li>
             </ul>
@@ -42,11 +47,13 @@
 
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="lib/ng-facebook/ngFacebook.js"></script>
 
     
     <!-- build:js({.tmp,app}) js/scripts.js -->
     <script src="angular.app.js"></script>
     <script src="controllers/main-controller.js"></script>
+    <script src="services/main-service.js"></script>
     <!-- endbuild -->
 </body>
 </html>
