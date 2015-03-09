@@ -11,9 +11,11 @@
 		vm.model = {};
 		vm.list = [];
 
+		refresh();
+
 		vm.create = function(){
 			mainService.create(vm.model).then(function(data){
-				vm.list.push(data);
+				vm.list.splice(0, 0, data);
 				vm.model = {};
 			});
 		}
@@ -24,17 +26,26 @@
 			});
 		}
 
+		vm.find = function(){
+			mainService.find().then(function(data){
+				vm.list = data;
+			});
+		}
+
 		function refresh() {
 			$facebook.api('/me').then( 
 			  function(response) {
-			  	console.log(response);
-			    vm.welcomeMsg = 'Welcome ' + response.name;
 			    vm.isLoggedIn = true;
+			    vm.user = {id: response.id, name: response.name};
+			    vm.find();
 			  },
 			  function(err) {
-			    vm.welcomeMsg = 'Please log in';
+			    vm.isLoggedIn = false;
+			    vm.user = {};
 			  });
 			}
 		}
+
+		
 
 })();

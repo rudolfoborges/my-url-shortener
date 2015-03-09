@@ -6,7 +6,7 @@
 	 module.exports = function(mongoose){
 		var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-		this.build = function(request, hashLength){
+		this.build = function(req, hashLength){
 			return new Promise(function(resolve, reject){
 				var ShortUrl = mongoose.model('ShortUrl'),
 					hash = '';
@@ -17,7 +17,7 @@
 				}
 
 				if(hash.length === hashLength){
-					var shortUrl = new ShortUrl({hash: hash, url: request.body.url});
+					var shortUrl = new ShortUrl({hash: hash, url: req.body.url, userID: req.headers.userid || null});
 					resolve(shortUrl);
 				} else {
 					reject(500);

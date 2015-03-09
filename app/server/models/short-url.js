@@ -14,6 +14,10 @@
 			type: String,
 			required: true
 		},
+		userID: {
+			type: Number,
+			required: false
+		},
 		created_at: {
 			type: Date,
 			default: Date.now

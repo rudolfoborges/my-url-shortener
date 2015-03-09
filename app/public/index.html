@@ -21,23 +21,26 @@
       <script src="lib/es5-shim/es5-shim.min.js"></script>
     <![endif]-->
 
-    <div class="content" ng-controller="MainController as vm">
-        <div class="login">
-            <p><i class="fa fa-user"></i></p>
-            <button type="button" ng-click="vm.login()" ng-hide="vm.isLoggedIn" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com o Facebook</button>
-        </div>
-        <h1>URL Shortener</h1>
-        <form ng-submit="vm.create()">
-                <input type="url" ng-model="vm.model.url" placeholder="Digite sua URL!" required>
-                <button type="submit" class="btn btn-default">OK</button>
+    <div class="container" ng-controller="MainController as vm">
+        <div>
+            <div class="login" ng-class="vm.isLoggedIn ? 'login-position': ''">
+                <div class="user-picture"><img ng-show="vm.isLoggedIn" src="//graph.facebook.com/{{vm.user.id}}/picture?type=normal"></div>
+                <label ng-show="vm.isLoggedIn" class"user-name">{{vm.user.name}} <span class="caret"></span></label> 
+                <p><i ng-show="!vm.isLoggedIn" class="fa fa-user"></i></p>
+                <button type="button" ng-click="vm.login()" ng-show="!vm.isLoggedIn" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com Facebook</button>
+            </div>
+            <h1>URL Shortener</h1>
+            <form ng-submit="vm.create()">
+                <input type="url" ng-model="vm.model.url" placeholder="Digite uma URL longa!" required>
             </form>
+        </div>
         <div class="list">    
             <ul>
                 <li ng-repeat="model in vm.list">
-                    <span class="">{{model.url}} &nbsp;&nbsp;>>&nbsp;&nbsp; </span>
+                    <span class="">{{model.url}} <i class="fa fa-chevron-right icon-small"></i> </span>
                     <span class=""><a href="#">http://localhost:3000/{{model.hash}}</a></span>
                     <span class="item-action">
-                        <a href="javascript:;" ng-click="remove($index)">Remover<i class="fa fa-times"></i></a>
+                        <a href="javascript:;" ng-click="remove($index)"><i class="fa fa-times"></i></a>
                     </span>
                 </li>
             </ul>

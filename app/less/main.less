@@ -9,7 +9,7 @@ body {
 	background: #eaeaea url(@bg-url);
 }
 
-.content {
+.container {
 	max-width: @content-width;
 	margin: 0 auto;
 	padding-top: 30px;
@@ -19,7 +19,6 @@ body {
 		width: 100%;
 		font-size: 5em;
 		font-weight: bold;
-		color: #b3b3b3;
 		color: rgba(255, 255, 255, 0.3);
 		text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
 		-webkit-text-rendering: optimizeLegibility;
@@ -27,7 +26,12 @@ body {
 		-ms-text-rendering: optimizeLegibility;
 		-o-text-rendering: optimizeLegibility;
 		text-rendering: optimizeLegibility;
+		margin-top: 0px;
 	}
+}
+
+.login-position {
+	margin-bottom: -20px;
 }
 
 .login {
@@ -42,6 +46,22 @@ body {
 			font-size: 5em;
 			color: #b3b3b3;
 		}
+	}
+
+	label {
+		margin-top: 10px;
+		font-size: 1.5em;
+		color: #b3b3b3;
+		display: inherit;
+		font-weight: 200;
+	}
+
+	img {
+		border: 3px solid #fff;
+        border-radius: 100px;
+        -moz-border-radius: 100px;
+        -khtml-border-radius: 100px;
+        -webkit-border-radius: 100px;   
 	}
 }
 
@@ -73,15 +93,12 @@ form {
 	input[type="url"] {
 		position: relative;
 		margin: 0;
-		width: 90%;
+		width: 100%;
 		font-size: 1.8em;
 		font-family: inherit;
 		line-height: 1.4em;
-		border: 0;
 		outline: none;
 		color: inherit;
-		padding: 6px;
-		border: 1px solid #999;
 		box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 		-moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;
@@ -97,6 +114,10 @@ form {
 		background: rgba(0, 0, 0, 0.02);
 		z-index: 2;
 		box-shadow: none;
+	}
+
+	button {
+		padding: 31px 16px 16px 40px;
 	}
 }
 
@@ -142,13 +163,19 @@ li {
 
 }
 
+a:link { 
+	text-decoration:none; 
+} 
 
 .item-action {
 	float: right;
 	margin-right: 15px;
-	a {
-		color: #FCFCFC;
-	}	
+	color: #FCFCFC;
+}
+
+.icon-small {
+	font-size: 0.8em;
+
 }
 
 /*####### MIXIN ##########*/

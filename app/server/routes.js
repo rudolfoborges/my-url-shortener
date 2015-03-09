@@ -7,7 +7,7 @@ var apiController = require('./controllers/api-controller');
 
 /* GET users listing. */
 router.route('/shortener').
-		//get(superheroController.find).
+		get(apiController.find).
 		post(apiController.create);
 
 //router.route('/api/:id').

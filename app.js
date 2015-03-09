@@ -31,7 +31,11 @@
 
 	app.use('/api', require('./app/server/routes'));
 
-	app.get('/', function(request, response) {
+	app.use('/:hash', function(req, res, next){
+		console.log('acho que dará certo');
+	});
+
+	app.get('/', function(req, res) {
 	  response.render('index.html');
 	});
 
