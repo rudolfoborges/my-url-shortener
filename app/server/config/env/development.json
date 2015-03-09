@@ -1,0 +1,11 @@
+{
+	"env": {
+		"dir": "app"
+	},
+	"mongo": {
+		"url": "mongodb://localhost:27017/urlshortener"
+	},
+	"app": {
+		"service_url": "http://localhost:3000" 
+	}
+}

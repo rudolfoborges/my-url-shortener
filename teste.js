@@ -1,6 +1,6 @@
-var max = 30,
-	min = 0,
-	alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+var config = require('./app/server/config/config-provider').load();
 
-console.log(alphabet.charAt(Math.floor(Math.random() * (max - min + 1)) + min));
-
+console.log(process.env.NODE_ENV);
+console.log(config.env.dir);
+console.log(config.mongo.url);
+console.log(config.app.service_url);
