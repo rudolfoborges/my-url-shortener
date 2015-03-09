@@ -1,4 +1,4 @@
-var config = require('./app/server/config/config-provider').load();
+var config = require('./config/config-provider').load();
 
 console.log(process.env.NODE_ENV);
 console.log(config.env.dir);

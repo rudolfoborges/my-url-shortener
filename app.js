@@ -7,29 +7,31 @@
 		bodyParser = require('body-parser'),
 		mongoose = require('mongoose'),
 		fs = require('fs'),
+		config = require('./config/config-provider').load(),
 		app = express();
 
+	var baseDIR = config.env.dir;
 	
 	// Configuration
 	app.use(logger('dev'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 
-	app.set('views', path.join(__dirname, 'app/public'));
+	app.set('views', path.join(__dirname, baseDIR + '/public'));
 	app.set('view engine', 'html');
 	app.engine('html', require('ejs').renderFile);
 
-	mongoose.connect('mongodb://localhost:27017/urlshortener');
+	mongoose.connect(config.mongo.url);
 
 	// Bootstrap models
-	fs.readdirSync(path.join(__dirname, '/app/server/models')).forEach(function (file) {
-	  if (~file.indexOf('.js')) require('./app/server/models/' + file);
+	fs.readdirSync(path.join(__dirname, baseDIR + '/server/models')).forEach(function (file) {
+	  if (~file.indexOf('.js')) require('./' + baseDIR + '/server/models/' + file);
 	});
 
 
-	app.use(express.static(path.join(__dirname, 'app/public')));
+	app.use(express.static(path.join(__dirname, baseDIR + '/public')));
 
-	app.use('/api', require('./app/server/routes'));
+	app.use('/api', require('./' + baseDIR + '/server/routes'));
 
 	app.use('/:hash', function(req, res, next){
 		console.log('acho que dará certo');
