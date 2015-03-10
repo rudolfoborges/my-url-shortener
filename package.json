@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "MODE_ENV=dev node teste.js"
-  }
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",

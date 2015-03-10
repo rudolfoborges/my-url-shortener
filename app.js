@@ -28,17 +28,16 @@
 	  if (~file.indexOf('.js')) require('./' + baseDIR + '/server/models/' + file);
 	});
 
-
 	app.use(express.static(path.join(__dirname, baseDIR + '/public')));
 
 	app.use('/api', require('./' + baseDIR + '/server/routes'));
 
-	app.use('/:hash', function(req, res, next){
-		console.log('acho que dará certo');
-	});
-
 	app.get('/', function(req, res) {
 	  response.render('index.html');
+	});
+
+	app.use('/:hash', function(req, res, next){
+		console.log(req);
 	});
 
 	var port = process.env.PORT || 3000;

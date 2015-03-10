@@ -32,6 +32,14 @@
 			     facebookJS.src = '//connect.facebook.net/en_US/sdk.js';
 			     firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
 		   }());
-		});
+		})
+
+		.directive('ngDelete', [function() {
+		    return {
+		      replace: true,
+		      templateUrl : 'templates/delete.html',
+		      scope: {onConfirm: '&'},
+		    }; 
+		}]);
 
 })();

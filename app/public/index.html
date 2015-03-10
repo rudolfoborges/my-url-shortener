@@ -39,9 +39,7 @@
                 <li ng-repeat="model in vm.list">
                     <span class="">{{model.url}} <i class="fa fa-chevron-right icon-small"></i> </span>
                     <span class=""><a href="#">http://localhost:3000/{{model.hash}}</a></span>
-                    <span class="item-action">
-                        <a href="javascript:;" ng-click="remove($index)"><i class="fa fa-times"></i></a>
-                    </span>
+                    <ng-delete on-confirm="vm.delete()" />
                 </li>
             </ul>
         </div>
