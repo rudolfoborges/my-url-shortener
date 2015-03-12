@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//var app = express();
 
 //Controllers
 var apiController = require('./controllers/api-controller');
@@ -10,12 +9,10 @@ router.route('/shortener').
 		get(apiController.find).
 		post(apiController.create);
 
-//router.route('/api/:id').
-		//get(superheroController.show).
-		//put(superheroController.update).
-		//delete(superheroController.destroy);
+router.route('/shortener/:shortUrlId').
+		delete(apiController.destroy);
 
 
-//router.param('id', superheroController.superhero);
+router.param('shortUrlId', apiController.shortUrl);
 
 module.exports = router;

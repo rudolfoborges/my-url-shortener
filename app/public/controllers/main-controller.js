@@ -11,24 +11,34 @@
 		vm.model = {};
 		vm.list = [];
 
-		refresh();
-
 		vm.create = function(){
-			mainService.create(vm.model).then(function(data){
-				vm.list.splice(0, 0, data);
+			var sortUrl = {
+				url: vm.model.url
+			};
+
+			mainService.save(sortUrl, function(response){
+				vm.list.splice(0, 0, response);
 				vm.model = {};
+			});
+		}
+
+		vm.find = function(){
+			mainService.query(function(response){
+				vm.list = response;
+			});
+		}
+
+		vm.remove = function(item){
+			item.$remove(function(response){
+				var index = vm.list.indexOf(item);
+				console.log(index);
+				vm.list.splice(index, 1);
 			});
 		}
 
 		vm.login = function() {
 			$facebook.login().then(function() {
 			  refresh();
-			});
-		}
-
-		vm.find = function(){
-			mainService.find().then(function(data){
-				vm.list = data;
 			});
 		}
 
@@ -44,8 +54,6 @@
 			    vm.user = {};
 			  });
 			}
-		}
-
-		
+		}	
 
 })();

@@ -23,11 +23,16 @@
 
     <div class="container" ng-controller="MainController as vm">
         <div>
-            <div class="login" ng-class="vm.isLoggedIn ? 'login-position': ''">
-                <div class="user-picture"><img ng-show="vm.isLoggedIn" src="//graph.facebook.com/{{vm.user.id}}/picture?type=normal"></div>
-                <label ng-show="vm.isLoggedIn" class"user-name">{{vm.user.name}} <span class="caret"></span></label> 
-                <p><i ng-show="!vm.isLoggedIn" class="fa fa-user"></i></p>
-                <button type="button" ng-click="vm.login()" ng-show="!vm.isLoggedIn" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com Facebook</button>
+            <div class="login">
+                <div ng-show="vm.isLoggedIn">
+                    <div class="user-picture"><img src="//graph.facebook.com/{{vm.user.id}}/picture?type=normal"></div>
+                    <label class"user-name">{{vm.user.name}}</label>
+                </div>
+
+                <div ng-show="!vm.isLoggedIn">
+                    <p><i class="fa fa-user"></i></p>
+                    <button type="button" ng-click="vm.login()" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com Facebook</button>
+                </div>
             </div>
             <h1>URL Shortener</h1>
             <form ng-submit="vm.create()">
@@ -37,9 +42,9 @@
         <div class="list">    
             <ul>
                 <li ng-repeat="model in vm.list">
-                    <span class="">{{model.url}} <i class="fa fa-chevron-right icon-small"></i> </span>
+                    <span class="">{{model.url}} <i class="fa fa-chevron-right icon-small"></i></span>
                     <span class=""><a href="#">http://localhost:3000/{{model.hash}}</a></span>
-                    <ng-delete on-confirm="vm.delete()" />
+                    <ng-delete on-confirm="vm.remove(model)" />
                 </li>
             </ul>
         </div>
@@ -47,7 +52,7 @@
     </div>
 
     <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/ng-facebook/ngFacebook.js"></script>
 
     

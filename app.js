@@ -30,15 +30,15 @@
 
 	app.use(express.static(path.join(__dirname, baseDIR + '/public')));
 
-	app.use('/api', require('./' + baseDIR + '/server/routes'));
-
 	app.get('/', function(req, res) {
 	  response.render('index.html');
 	});
 
-	app.use('/:hash', function(req, res, next){
-		console.log(req);
-	});
+	app.use('/api', require('./' + baseDIR + '/server/routes'));
+
+	//app.use('/:hash', function(req, res, next){
+		//console.log(req);
+	//});
 
 	var port = process.env.PORT || 3000;
 	app.listen(port, function() {

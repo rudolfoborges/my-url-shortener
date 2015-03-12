@@ -3,30 +3,10 @@
 
 	angular
 		.module('myUrlShortener')
-		.service('MainService', MainService);
+		.service('MainService', ['$resource', MainService]);
 
-	function MainService($http, $q){
-		return {
-			create: function(model){
-				var deferred = $q.defer();
-				$http.post('api/shortener', model).then(function(response){
-					deferred.resolve(response.data);
-				}, function() {
-					deferred.reject();
-				});
-				return deferred.promise;
-			},
-
-			find: function(){
-				var deferred = $q.defer();
-				$http.get('api/shortener').then(function(response){
-					deferred.resolve(response.data);
-				}, function() {
-					deferred.reject();
-				});
-				return deferred.promise;
-			}
-		}
+	function MainService($resource){
+		return $resource('api/shortener/:shortUrlId', {shortUrlId: '@_id'}, {update: {method: 'PUT'}});
 	}
 
 

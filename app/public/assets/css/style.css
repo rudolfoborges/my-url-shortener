@@ -22,9 +22,6 @@ body {
   text-rendering: optimizeLegibility;
   margin-top: 0px;
 }
-.login-position {
-  margin-bottom: -20px;
-}
 .login {
   width: 100%;
   text-align: center;
@@ -144,7 +141,7 @@ a:link {
 .item-action {
   float: right;
   margin-right: 15px;
-  color: #FCFCFC;
+  color: #d9534f;
 }
 .icon-small {
   font-size: 0.8em;
