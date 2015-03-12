@@ -5,10 +5,13 @@
     "express": "~4.9.0",
     "mongoose": "^3.8.16",
     "lodash": "^2.4.1",
+    "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
     "body-parser": "~1.8.1",
     "morgan": "~1.3.0",
-    "promise": "^6.1.0"
+    "promise": "^6.1.0",
+    "express-session": "^1.10.3",
+    "cookie-parser": "^1.3.4"
   },
   "scripts": {
     "start": "MODE_ENV=dev node teste.js"

@@ -1,18 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
-//Controllers
-var apiController = require('./controllers/api-controller');
 
-/* GET users listing. */
-router.route('/shortener').
-		get(apiController.find).
-		post(apiController.create);
+(function(){
+	var controller = require('./controllers/shortener-controller');
 
-router.route('/shortener/:shortUrlId').
-		delete(apiController.destroy);
+	router.route('/shortener').
+			get(controller.find).
+			post(controller.create);
+
+	router.route('/shortener/:shortUrlId').
+			delete(controller.destroy);
 
 
-router.param('shortUrlId', apiController.shortUrl);
+	router.param('shortUrlId', controller.shortUrl);
+})();
+
+
+(function(){
+	var controller = require('./controllers/config-controller');
+
+	router.route('/config').get(controller.find);
+
+})();
+
 
 module.exports = router;

@@ -16,8 +16,9 @@
 
 
 	exports.find = function(req, res){
-		if(req.headers.userid){
-			ShortUrl.find({userID: req.headers.userid}).sort({created_at: -1}).exec(function(err, models){
+		var user = req.session.passport.user;
+		if(user){
+			ShortUrl.find({userID: user.id}).sort({created_at: -1}).exec(function(err, models){
 				res.status(200).json(models);
 			});
 		} else {

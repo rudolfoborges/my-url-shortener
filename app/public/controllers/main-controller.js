@@ -3,9 +3,9 @@
 
 	angular
 		.module('myUrlShortener')
-		.controller('MainController', ['MainService', '$facebook', MainController]);
+		.controller('MainController', ['MainService', MainController]);
 
-	function MainController(mainService, $facebook){
+	function MainController(mainService){
 		var vm = this;
 
 		vm.model = {};
@@ -37,9 +37,7 @@
 		}
 
 		vm.login = function() {
-			$facebook.login().then(function() {
-			  refresh();
-			});
+			window.open('http://localhost:3000/auth/facebook', 'login', 'width=600,height=400');
 		}
 
 		function refresh() {
