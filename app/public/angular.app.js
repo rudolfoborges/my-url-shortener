@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('myUrlShortener', ['ngResource'])
+		.module('myUrlShortener', ['ngResource', 'ngFacebook'])
 
 		.config(['$locationProvider', '$httpProvider', '$provide',
 			function($locationProvider, $httpProvider, $provide){
@@ -22,6 +22,8 @@
 			    firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
 			})
 		}])
+
+		
 
 		.directive('ngDelete', [function() {
 		    return {
