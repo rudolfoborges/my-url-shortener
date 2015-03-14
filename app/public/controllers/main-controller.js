@@ -39,7 +39,6 @@
 		vm.remove = function(item){
 			item.$remove(function(response){
 				var index = vm.list.indexOf(item);
-				console.log(index);
 				vm.list.splice(index, 1);
 			});
 		}

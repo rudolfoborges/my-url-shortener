@@ -78,8 +78,6 @@
 
 	app.use('/api', require('./' + baseDIR + '/server/routes'));
 
-	console.log('chega aqui!');
-
 	app.get('/:hash', require('./' + baseDIR + '/server/controllers/redirect-controller').sendRedirect);
 
 
