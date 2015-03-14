@@ -174,19 +174,15 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('lessToCss', ['less', 'watch:less']);
-
   grunt.registerTask('js-min', ['concat:js', 'uglify:generated']);
-
   grunt.registerTask('css-min', ['concat:css', 'cssmin:generated']);
-
   grunt.registerTask('all-min', ['js-min', 'css-min']);
-
   grunt.registerTask('build', ['clean:dist', 'less', 'all-min',  'copy:dist', 'usemin']);
 
   grunt.registerTask('dev', ['express:dev', 'watch:express']);
-
-  grunt.registerTask('prod', ['build', 'express:prod']);
-
   grunt.registerTask('test', ['express:test']);
+  grunt.registerTask('run', ['build', 'express:prod']);
+
+  
 
 };

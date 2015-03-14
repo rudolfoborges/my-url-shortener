@@ -21,12 +21,14 @@
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(cookieParser());
-	app.use(session({ secret: 'keyboard cat', key: 'sid'}));
+
+	app.use(session({ secret: 'urlshortener', resave: true, saveUninitialized: true}));
+
 	app.use(passport.initialize());
 	app.use(passport.session());
 
 	app.set('views', path.join(__dirname, baseDIR + '/public'));
-	app.set('view engine', 'html');
+	app.set('view engine', 'ejs');
 	app.engine('html', require('ejs').renderFile);
 
 	mongoose.connect(config.mongo.url);
@@ -62,7 +64,7 @@
 	
 
 	app.get('/', function(req, res) {
-	  res.render('index.html');
+	  res.render('index', {user: getUser(req)});
 	});
 
 	app.get('/auth/facebook', passport.authenticate('facebook', {display: 'popup', authType: 'reauthenticate'}));
@@ -81,5 +83,9 @@
 	app.listen(port, function() {
 	  console.log("Listening on " + port);
 	});
+
+	function getUser(req){
+		return req.session.passport.user || {id: '', displayName: ''};
+	}
 
 })();

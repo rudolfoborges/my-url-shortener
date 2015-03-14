@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('myUrlShortener', ['ngResource', 'ngFacebook'])
+		.module('myUrlShortener', ['ngResource'])
 
 		.config(['$locationProvider', '$httpProvider', '$provide',
 			function($locationProvider, $httpProvider, $provide){
@@ -20,10 +20,14 @@
 			    facebookJS.id = 'facebook-jssdk';
 			    facebookJS.src = '//connect.facebook.net/en_US/sdk.js';
 			    firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
-			})
-		}])
+			});
 
-		
+			$rootScope.$on('loggedIn', function(event, userID, username){
+				$rootScope.isLoggedIn = true;
+				$rootScope.userID = userID;
+				$rootScope.username = username;
+			});
+		}])
 
 		.directive('ngDelete', [function() {
 		    return {
