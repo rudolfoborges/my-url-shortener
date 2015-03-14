@@ -7,7 +7,6 @@
 
 	exports.find = function(req, res){
 		var frontConfig = {
-			facebookAppId: config.facebook.appID,
 			baseURL: config.app.baseURL
 		};
 
