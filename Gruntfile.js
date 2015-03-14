@@ -60,6 +60,7 @@ module.exports = function(grunt) {
             'public/lib/**/*',
             'public/assets/images/**/*',
             'public/**/*.html',
+            'public/**/*.ejs',
             'server/**/*'
           ]
         },
@@ -133,7 +134,7 @@ module.exports = function(grunt) {
     },
 
     usemin: {
-      html: [gruntConfig.distDIR + '/public/index.html']
+      html: [gruntConfig.distDIR + '/public/index.ejs']
     },
 
     express: {

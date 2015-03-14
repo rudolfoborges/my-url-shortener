@@ -20,7 +20,13 @@
 			    facebookJS.id = 'facebook-jssdk';
 			    facebookJS.src = '//connect.facebook.net/en_US/sdk.js';
 			    firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
-			})
+			});
+
+			$rootScope.$on('loggedIn', function(event, userID, username){
+				$rootScope.isLoggedIn = true;
+				$rootScope.userID = userID;
+				$rootScope.username = username;
+			});
 		}])
 
 		.directive('ngDelete', [function() {
@@ -39,13 +45,20 @@
 
 	angular
 		.module('myUrlShortener')
-		.controller('MainController', ['MainService', MainController]);
+		.controller('MainController', ['$scope', '$window', 'MainService', MainController]);
 
-	function MainController(mainService){
+	function MainController($scope, $window, mainService){
 		var vm = this;
 
 		vm.model = {};
 		vm.list = [];
+
+		vm.init = function(userID, username){
+			if(userID){
+				$scope.$emit('loggedIn', userID, username);
+				vm.find();
+			}
+		}
 
 		vm.create = function(){
 			var sortUrl = {
@@ -55,6 +68,7 @@
 			mainService.save(sortUrl, function(response){
 				vm.list.splice(0, 0, response);
 				vm.model = {};
+				$scope.frm.$setPristine();
 			});
 		}
 
@@ -73,22 +87,10 @@
 		}
 
 		vm.login = function() {
-			window.open('http://localhost:3000/auth/facebook', 'login', 'width=600,height=400');
+			$window.open('http://localhost:3000/auth/facebook', 'login', 'width=600,height=400');
 		}
-
-		function refresh() {
-			$facebook.api('/me').then( 
-			  function(response) {
-			    vm.isLoggedIn = true;
-			    vm.user = {id: response.id, name: response.name};
-			    vm.find();
-			  },
-			  function(err) {
-			    vm.isLoggedIn = false;
-			    vm.user = {};
-			  });
-			}
-		}	
+		
+	}	
 
 })();
 (function(){

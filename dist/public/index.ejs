@@ -20,22 +20,26 @@
       <script src="lib/es5-shim/es5-shim.min.js"></script>
     <![endif]-->
 
-    <div class="container" ng-controller="MainController as vm">
+    <div class="container" ng-controller="MainController as vm" ng-init="vm.init('<%=user.id%>', '<%=user.displayName%>')">
+
         <div>
             <div class="login">
-                <div ng-show="vm.isLoggedIn">
-                    <div class="user-picture"><img src="//graph.facebook.com/{{vm.user.id}}/picture?type=normal"></div>
-                    <label class"user-name">{{vm.user.name}}</label>
-                </div>
-
-                <div ng-show="!vm.isLoggedIn">
+              
+                <div ng-show="isLoggedIn">
+                    <div class="user-picture"><img src="//graph.facebook.com/{{userID}}/picture?type=normal"></div>
+                    <label class"user-name">{{username}}</label>
+                </div> 
+                <div ng-show="!isLoggedIn">
                     <p><i class="fa fa-user"></i></p>
                     <a type="button" ng-click="vm.login()" class="btn btn-primary"><i class="fa fa-facebook-square"></i> Login com Facebook</a>
                 </div>
+
             </div>
             <h1>URL Shortener</h1>
-            <form ng-submit="vm.create()">
-                <input type="url" ng-model="vm.model.url" placeholder="Digite uma URL longa!" required>
+            <form name="frm" ng-submit="vm.create()">
+                <input type="url" name="url" ng-model="vm.model.url" placeholder="Digite uma URL longa!" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback form-control-feedback-valid" ng-show="frm.url.$dirty && frm.url.$valid" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback form-control-feedback-invalid" ng-show="frm.url.$dirty && frm.url.$invalid" aria-hidden="true"></span>
             </form>
         </div>
         <div class="list">    
@@ -52,8 +56,6 @@
 
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
-    <script src="lib/ng-facebook/ngFacebook.js"></script>
-
     
     <script src="assets/js/app.min.js"></script>
 </body>
