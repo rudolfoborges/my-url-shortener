@@ -46,7 +46,7 @@
             <ul>
                 <li ng-repeat="model in vm.list">
                     <span class="">{{model.url}} <i class="fa fa-chevron-right icon-small"></i></span>
-                    <span class=""><a href="#">{{baseURL}}/{{model.hash}}</a></span>
+                    <span class=""><a href="{{baseURL}}/{{model.hash}}">{{baseURL}}/{{model.hash}}</a></span>
                     <ng-delete on-confirm="vm.remove(model)" />
                 </li>
             </ul>

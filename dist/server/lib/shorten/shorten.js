@@ -18,7 +18,6 @@
 
 				if(hash.length === hashLength){
 					var user = req.session.passport.user;
-					console.log(user);
 					var shortUrl = new ShortUrl({hash: hash, url: req.body.url, userID: user? user.id : null});
 					resolve(shortUrl);
 				} else {

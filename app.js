@@ -40,8 +40,6 @@
 
 	app.use(express.static(path.join(__dirname, baseDIR + '/public')));
 
-	console.log(config.app.baseURL + "/auth/facebook/callback");
-
 	passport.use(new FacebookStrategy({
 	    clientID: 784472188274113,
 	    clientSecret: '1b7cc4a6c693a89fd6002da715514a7c',
@@ -75,9 +73,10 @@
 
 	app.use('/api', require('./' + baseDIR + '/server/routes'));
 
-	//app.use('/:hash', function(req, res, next){
-		//console.log(req);
-	//});
+	console.log('chega aqui!');
+
+	app.get('/:hash', require('./' + baseDIR + '/server/controllers/redirect-controller').sendRedirect);
+
 
 	var port = process.env.PORT || 3000;
 	app.listen(port, function() {
