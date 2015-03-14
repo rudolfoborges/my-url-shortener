@@ -41,8 +41,8 @@
 	app.use(express.static(path.join(__dirname, baseDIR + '/public')));
 
 	passport.use(new FacebookStrategy({
-	    clientID: 784472188274113,
-	    clientSecret: '1b7cc4a6c693a89fd6002da715514a7c',
+	    clientID: config.facebook.appID,
+	    clientSecret: config.facebook.appSecret,
 	    callbackURL: config.app.baseURL + "/auth/facebook/callback"
 	  },
 	  function(accessToken, refreshToken, profile, done) {
@@ -69,6 +69,11 @@
 
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/'}), function(req, res){
 		res.send('<script>window.opener.parent.location.href="/"; window.close();</script>');
+	});
+
+	app.get('/logout', function(req, res){
+	  req.logout();
+	  res.redirect('/');
 	});
 
 	app.use('/api', require('./' + baseDIR + '/server/routes'));

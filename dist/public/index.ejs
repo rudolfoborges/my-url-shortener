@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="assets/css/main.min.css">
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    
+    <script src="assets/js/app.min.js"></script>
 </head>
   <body ng-app="myUrlShortener">
 
@@ -28,6 +33,7 @@
                 <div ng-show="isLoggedIn">
                     <div class="user-picture"><img src="//graph.facebook.com/{{userID}}/picture?type=normal"></div>
                     <label class"user-name">{{username}}</label>
+                    <span><a href="/logout">Sair</a></span>
                 </div> 
                 <div ng-show="!isLoggedIn">
                     <p><i class="fa fa-user"></i></p>
@@ -53,10 +59,6 @@
         </div>
         
     </div>
-
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular-resource/angular-resource.min.js"></script>
     
-    <script src="assets/js/app.min.js"></script>
 </body>
 </html>

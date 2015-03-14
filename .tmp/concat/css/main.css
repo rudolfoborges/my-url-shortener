@@ -4,7 +4,7 @@ body {
   background: #eaeaea url('../images/bg.png');
 }
 .container {
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   padding-top: 30px;
 }

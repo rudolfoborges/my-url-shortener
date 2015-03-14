@@ -15,7 +15,7 @@
     "ejs": "~2.0.0"
   },
   "scripts": {
-    "start": "MODE_ENV=dev node teste.js"
+    "start": "NODE_ENV=production node app.js"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

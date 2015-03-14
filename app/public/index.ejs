@@ -15,6 +15,15 @@
     <!-- build:css assets/css/main.min.css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- endbuild -->
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    
+    <!-- build:js assets/js/app.min.js -->
+    <script src="angular.app.js"></script>
+    <script src="controllers/main-controller.js"></script>
+    <script src="services/main-service.js"></script>
+    <!-- endbuild -->
 </head>
   <body ng-app="myUrlShortener">
 
@@ -30,6 +39,7 @@
                 <div ng-show="isLoggedIn">
                     <div class="user-picture"><img src="//graph.facebook.com/{{userID}}/picture?type=normal"></div>
                     <label class"user-name">{{username}}</label>
+                    <span><a href="/logout">Sair</a></span>
                 </div> 
                 <div ng-show="!isLoggedIn">
                     <p><i class="fa fa-user"></i></p>
@@ -55,14 +65,6 @@
         </div>
         
     </div>
-
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular-resource/angular-resource.min.js"></script>
     
-    <!-- build:js assets/js/app.min.js -->
-    <script src="angular.app.js"></script>
-    <script src="controllers/main-controller.js"></script>
-    <script src="services/main-service.js"></script>
-    <!-- endbuild -->
 </body>
 </html>

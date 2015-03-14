@@ -87,7 +87,7 @@
 		}
 
 		vm.login = function() {
-			$window.open('http://localhost:3000/auth/facebook', 'login', 'width=600,height=400');
+			$window.open($scope.baseURL + '/auth/facebook', 'login', 'width=600,height=400');
 		}
 		
 	}	

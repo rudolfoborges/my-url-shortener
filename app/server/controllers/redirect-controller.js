@@ -8,7 +8,7 @@
 		var hash = req.params.hash;
 		ShortUrl.findOne({hash: hash}, function(err, shortUrl) {
 		    if (err) return next(err);
-		    if (!shortUrl) return next(new Error('Failed to load url: ' + hash));
+		    if (!shortUrl) return res.status(404).json({error: 'Failed to load url: ' + hash});
 		    res.redirect(shortUrl.url);
 		});
 	}
