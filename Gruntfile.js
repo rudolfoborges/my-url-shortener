@@ -180,7 +180,7 @@ module.exports = function(grunt) {
   grunt.registerTask('all-min', ['js-min', 'css-min']);
   grunt.registerTask('build', ['clean:dist', 'less', 'all-min',  'copy:dist', 'usemin']);
 
-  grunt.registerTask('dev', ['express:dev', 'watch:express']);
+  grunt.registerTask('dev', ['express:dev']);
   grunt.registerTask('test', ['express:test']);
   grunt.registerTask('run', ['build', 'express:prod']);
 
