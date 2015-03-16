@@ -18,7 +18,7 @@ Comandos necessários:
 * bower install
 
 # Comandos:
-* grunt build: Cria um build do projeto para distribuição, concatenando e minificando os arquivos css e js. Os arquivos resultantes serão armazenados na pasta "dist";
+* grunt build: Cria um build do projeto concatenando e minificando os arquivos css e js. Os arquivos resultantes serão armazenados na pasta "dist";
 
 * grunt dev: Inicializa o servidor em ambiente de desenvolvimento;
 
