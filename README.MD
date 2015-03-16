@@ -1,5 +1,5 @@
 # Desafio:
-#### Desenvolver uma aplicação web que permita o cadastro de url longas.
+#### Desenvolver uma aplicação web que permita o cadastro de urls longas.
 
 # Tecnologias utilizadas:
 * MongoDB
@@ -27,4 +27,4 @@ Comandos necessários:
 * grunt less - Processa os arquivos less transformando-os em css.
 
 
-Demo: http://myshortener.herokuapp.com
+#### Demo: http://myshortener.herokuapp.com
